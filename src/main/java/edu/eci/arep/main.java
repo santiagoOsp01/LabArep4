@@ -18,6 +18,6 @@ public class main {
     public static void main(String[] args) throws Exception {
         controllerMovie.begin();
         serverHttp ServerHttp = new serverHttp();
-        ServerHttp.begin();
+        //ServerHttp.begin();
     }
 }
