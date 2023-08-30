@@ -32,7 +32,7 @@ mvn package
 luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es serverHttp
 y en esta clase corremos el metodo main, para que funcione nuestra clase
 
-![img.png](img.png)
+![img.png](photos/img.png)
 
 Eso hará que ya este disponible nuestra aplicacion. Para corroborar pega y copia o presiona
 la siguiente url http://localhost:35000/index.html.
@@ -40,11 +40,11 @@ la siguiente url http://localhost:35000/index.html.
 entramos en el siguiente link porque en este html esta la aplicacion que nos pidieron
 para este laboratorio, podemos observar a continuacion:
 
-![img_1.png](img_1.png)
+![](photos/img_1.png)
 
 y al buscar una pelicula aparecera lo siguiente.
 
-![img_2.png](img_2.png)
+![](photos/img_2.png)
 
 ## Corriendo los tests
 
@@ -54,31 +54,31 @@ tipos de archivos que nos piden en este laboratorio html, css, js, y imagenes
 
 vamos a primero probar con html:
 
-![img_1.png](img_1.png)
+![](photos/img_1.png)
 
 css:
 
-![img_4.png](img_4.png)
+![](photos/img_4.png)
 
 js:
 
-![img_5.png](img_5.png)
+![](photos/img_5.png)
 
 imagenes jpg:
 
-![img_6.png](img_6.png)
+![](photos/img_6.png)
 
 imagenes png:
 
-![img_7.png](img_7.png)
+![](photos/img_7.png)
 
 tambien cuando un archivo no existe nos direcciona a la siguiente pagina:
 
-![img_8.png](img_8.png)
+![](photos/img_8.png)
 
 y si no manejamos un formato nos lleva a lo siguiente:
 
-![img_9.png](img_9.png)
+![](photos/img_9.png)
 
 ## Documentación
 Primero debemos ejecutar el siguiente comando para crear la documentación.
@@ -92,7 +92,7 @@ En la siguiente ruta desde nuestra carpeta del proyecto podemos encontrar la doc
 ```
 Si ingresamos a esta podemos ver que hay un index.html que al abrir nos mostrara la siguiente pagina.
 
-![img_10.png](img_10.png)
+![](photos/img_10.png)
 
 ## Construido con
 
