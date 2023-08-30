@@ -29,6 +29,11 @@ con nuestro IDE escogido y el siguiente comando.
 mvn package
 ```
 
+luego de ejecutar el comando si estamos en intellij vamos a construir el proyecto presionando 
+este boton de martillo verde que podemos ver en la siguiente imagen:
+
+![](photos/img12.png)
+
 luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es serverHttp
 y en esta clase corremos el metodo main, para que funcione nuestra clase
 
