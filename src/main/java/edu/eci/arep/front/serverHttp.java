@@ -2,17 +2,26 @@ package edu.eci.arep.front;
 
 import java.net.*;
 import java.io.*;
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import edu.eci.arep.fileController.fileController;
+import edu.eci.arep.fileController.imgController;
+import edu.eci.arep.fileController.textController;
 import org.json.*;
-import edu.eci.arep.back.controllerMovie;
 
 /***
  * Clase encargada de montar nuestro servidor http
  */
 public class serverHttp {
+    private static fileController responseInterface;
+    private static final List<String> supportedImgFormats = Arrays.asList("jpg", "png", "jpeg");
+
+    private static final List<String> supportedTextFormats = Arrays.asList("html", "css", "js");
 
 
     /***
@@ -21,7 +30,7 @@ public class serverHttp {
      * de lo contrario seguira funcionando con la excepcion que ocurra un error
      * @throws Exception en caso de que suceda un error
      */
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(35000);
@@ -39,56 +48,60 @@ public class serverHttp {
                 System.err.println("Accept failed.");
                 System.exit(1);
             }
-            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String inputLine, outputLine;
-            boolean firstLine = true;
-            String path = null;
-            while ((inputLine = in.readLine()) != null) {
-                System.out.println("Received: " + inputLine);
-                if (firstLine){
-                    firstLine = false;
-                    path = inputLine.split(" ")[1];
-                }
-                if (!in.ready()) {
-                    break;
-                }
-            }
-            outputLine = "";
-            if (path.startsWith("/movie")){
-                outputLine = getTextFile(path, clientSocket.getOutputStream());
-            } else {
-                outputLine = getTextFile(path, clientSocket.getOutputStream());
-            }
-            out.println(outputLine);
-            out.close();
+
+            String inputLine = in.readLine();
+            String path = inputLine.split(" ")[1];
+            URI resourcePath = new URI("/target/classes/public" + path);
+            System.out.println("Received: " + inputLine);
+
+            try {
+                sendResponse(resourcePath, clientSocket);
+            }catch (Exception e){}
+
+
             in.close();
-            clientSocket.close();
         }
         serverSocket.close();
     }
 
-
-
-    public static String getTextFile(String path, OutputStream out) throws URISyntaxException, IOException {
-        URI requestedUir = null;
-        requestedUir = new URI("target/classes/public" + path);
-        String header = "";
-        Path file = Paths.get(requestedUir.getPath());
-        PrintWriter printWriter = new PrintWriter(out, true);
-        BufferedReader reader = Files.newBufferedReader(file);
-        String line = null;
-        header = "HTTP/1.1 200 OK \r\n" +
-                "Content-Type: text/html \r\n" +
-                "Access-Control-Allow-Headers: *"+
-                "\r\n";
-        while ((line = reader.readLine()) != null){
-            System.out.println(line);
-            printWriter.println(line);
-            header += line + "r\n";
+    private static void sendResponse(URI resourcePath, Socket clientSocket) throws IOException, URISyntaxException {
+        char lastChar = resourcePath.getPath().charAt(resourcePath.getPath().length() - 1);
+        String fileType = getFileType(resourcePath);
+        if (!fileExists(resourcePath)) {
+            responseInterface = new textController(clientSocket, "html", new URI("/target/classes/public" + "/error.html"));
+        } else if (isImage(resourcePath)) {
+            responseInterface = new imgController(clientSocket, fileType, resourcePath);
+        } else if (isText(resourcePath)) {
+            responseInterface = new textController(clientSocket, fileType, resourcePath);
         }
-        return header;
+        responseInterface.sendResponse();
     }
+
+    private static String getFileType(URI path){
+        String fileFormat = "";
+        try {
+            fileFormat = path.getPath().split("\\.")[1];
+        } catch (ArrayIndexOutOfBoundsException ignored){}
+        return fileFormat;
+    }
+
+    private static boolean isImage(URI path){
+        String fileFormat = path.getPath().split("\\.")[1];
+        return supportedImgFormats.contains(fileFormat);
+    }
+
+    private static boolean isText(URI path){
+        String fileFormat = path.getPath().split("\\.")[1];
+        return supportedTextFormats.contains(fileFormat);
+    }
+
+    private static boolean fileExists(URI path) {
+        File file = new File(System.getProperty("user.dir") + path);
+        return file.exists();
+    }
+
 
 
 }

@@ -1,0 +1,13 @@
+.introduction{
+    position: relative;
+    min-height: 100vh;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: url("./sistemas.jpg");
+    background-size: cover;
+    background-position: top;
+}
+

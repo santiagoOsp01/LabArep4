@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0044a642-610a-40f6-abff-87fb473e742b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/fileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/imgController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/textController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/perro.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/sistemas.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/back/cache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/back/controllerMovie.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/front/serverHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/front/serverHttp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/BackTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/concurrentJavaTestClient/ConcurrentTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/concurrentJavaTestClient/movieThread.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -44,16 +57,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/santiago.ospina-m/LabArep1",
+    "last_opened_file_path": "C:/Users/santi/LabArep2/src/main/resources/public",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\santi\LabArep2\src\main\resources\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\santi\labArep1\photos" />
       <recent name="C:\Users\santi\labArep1" />
@@ -88,7 +105,7 @@
     </configuration>
     <configuration name="serverHttp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.eci.arep.front.serverHttp" />
-      <module name="labArep1" />
+      <module name="LabArep2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="edu.eci.arep.front.*" />

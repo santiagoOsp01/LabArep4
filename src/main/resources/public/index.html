@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Example</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2 Arep</title>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Form with GET</h1>
-<form action="/hello">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" value="John"><br><br>
-    <input type="button" value="Submit" onclick="loadGetMsg()">
-</form>
-<div id="getrespmsg"></div>
+    <div class="introduction">
+        <div>
+            <h1>Lab Arep 2</h1>
+            <p>Aqui una imagen de mi perro</p>
+            <img src="./perro.jpg" />
+            <p>como podemos obsevar esta mantiene la funcionalidad del primer laboratorio</p>
+        </div>
+    </div>
 
+    <div class="MovieLibrary">
+        <div class="form-container">
+            <h2>MovieLibrary</h2>
+            <form>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" value="It"><br><br>
+                <input type="button" value="Submit" onclick="loadGetMsg()">
+            </form>
+        </div>
+        <div id="getrespmsg" class="response-container"></div>
+    </div>
+    <script src="./api.js"></script>
 </body>
 </html>
