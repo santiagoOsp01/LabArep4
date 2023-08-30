@@ -5,12 +5,18 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class textController implements fileController {
+/***
+ * Clase encargada de los archivos de texto
+ */
+public class textController extends file {
 
-    private Socket clientSocket;
-    private String fileType;
-    private URI filePath;
 
+    /***
+     * constructor de la clase textController recibe
+     * @param clientSocket es el nuestro socket
+     * @param fileType es el formato del archivo
+     * @param filePath es el path de nuestro archivo
+     */
     public textController(Socket clientSocket, String fileType, URI filePath){
         this.clientSocket = clientSocket;
         this.fileType = fileType;
@@ -22,8 +28,12 @@ public class textController implements fileController {
     }
 
 
+    /***
+     * metodo encargado de enviar los archivos
+     * @throws IOException en caso de que suceda un error
+     */
     @Override
-    public void sendResponse() throws IOException {
+    public void sendfile() throws IOException {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         String outputLine;
 
@@ -38,24 +48,32 @@ public class textController implements fileController {
         clientSocket.close();
     }
 
-    @Override
+    /***
+     * metodo encargado de enviar los archivos
+     * @param path es el direccion de nuestro archivo
+     * @return String
+     */
     public String readFile(String path) {
-        StringBuilder textFile = new StringBuilder();
+        StringBuilder outputLine = new StringBuilder();
         try {
             File file = new File(path);
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
-                textFile.append(data);
+                outputLine.append(data);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return textFile.toString();
+        return outputLine.toString();
     }
 
-    private String getMimeType(){
+    /***
+     * metodo encargado de devolver le MimeType
+     * @return String
+     */
+    public String getMimeType(){
         switch (fileType){
             case "js":
                 return "text/javascript";

@@ -5,23 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0044a642-610a-40f6-abff-87fb473e742b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/fileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/imgController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/textController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/perro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/sistemas.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img_9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/error102.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/public/negro.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/back/cache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/back/controllerMovie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/fileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/imgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/imgController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/textController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/fileController/textController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/front/serverHttp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/eci/arep/front/serverHttp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/eci/arep/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/error101.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/BackTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/concurrentJavaTestClient/ConcurrentTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/eci/arep/concurrentJavaTestClient/movieThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/sistemas.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +39,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>

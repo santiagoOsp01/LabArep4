@@ -1,7 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-.idea
+
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -16,3 +16,4 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea

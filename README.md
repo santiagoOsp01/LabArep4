@@ -1,8 +1,7 @@
-# Laboratorio 1 AREP
-este proyecto consiste en construir una aplicacion para consultar la informacion
-las peliculas de cine. para esto se desarollo un arquitectura simple, donde simplemente
-tenemos un front echo en html y javascript, un back echo totalmente en java y una api
-externa 
+# Laboratorio 2 AREP
+este laboratorio consiste en construir un servidor http que pueda manejar
+diferentes tipos de archivos, y ademas de eso tener una aplicacion html css javascript
+que use de recurso rest.
 
 ## Iniciando
 
@@ -20,7 +19,7 @@ a nuestro entorno local para eso ejecutamos el siguiente comando en
 la terminal donde funcionen los comandos git
 
 ```
-git clone https://github.com/santiagoOsp01/LabArep1.git
+git clone https://github.com/santiagoOsp01/LabArep2.git
 ```
 
 Esto creará un repositorio localdonde accederemos y ejecutaremos 
@@ -30,43 +29,56 @@ con nuestro IDE escogido y el siguiente comando.
 mvn package
 ```
 
-luego de que ya lo tengamos vamos a ejecutar la clase principal para que nuestra
-aplicacion funcione
+luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es serverHttp
+y en esta clase corremos el metodo main, para que funcione nuestra clase
 
-![](photos/img.png)
+![img.png](img.png)
 
 Eso hará que ya este disponible nuestra aplicacion. Para corroborar pega y copia o presiona
-la siguiente url http://localhost:35000.
+la siguiente url http://localhost:35000/index.html.
 
-al buscar una pelicula aparecera lo siguiente.
+entramos en el siguiente link porque en este html esta la aplicacion que nos pidieron
+para este laboratorio, podemos observar a continuacion:
 
-![](photos/img_1.png)
+![img_1.png](img_1.png)
+
+y al buscar una pelicula aparecera lo siguiente.
+
+![img_2.png](img_2.png)
 
 ## Corriendo los tests
 
-En este proyecto se implementaron dos tipos de test, 
-los primeros son los Unitest que se pueden ejecutar
-dirigiendose a la carpeta de test a la clase llamada backTest y correrla
-como podemos ver a continuacion
+en este proyecto no contamos con pruebas unitarias, sino que todas las pruebas
+se hicieron con la aplicacion en marcha para verificar que si pueda con los
+tipos de archivos que nos piden en este laboratorio html, css, js, y imagenes
 
-![](photos/img_2.png)
+vamos a primero probar con html:
 
-Estos test se realisaron para probar la logica implementada en el back
+![img_1.png](img_1.png)
 
+css:
 
-### clientTestConcurrency
+![img_4.png](img_4.png)
 
-para estos text que prueban la concurency de igual manera nos vamos
-a ir a la carpeta de test y ahi abri la capeta denominada concurrencyJavaTestClient
-y ahi entraremos a la clase concurrencyTest y ejecutaremos el main
+js:
 
-![](photos/img_3.png)
+![img_5.png](img_5.png)
 
-Luego de ejecutarla nos aparecera lo siguiente:
+imagenes jpg:
 
-![](photos/img_4.png)
+![img_6.png](img_6.png)
 
-Esto enviará 100, y nos devolverá el tiempo en milisegundos de lo que tardo nuestro back en responderlas todas como se muestra a continuación.
+imagenes png:
+
+![img_7.png](img_7.png)
+
+tambien cuando un archivo no existe nos direcciona a la siguiente pagina:
+
+![img_8.png](img_8.png)
+
+y si no manejamos un formato nos lleva a lo siguiente:
+
+![img_9.png](img_9.png)
 
 ## Documentación
 Primero debemos ejecutar el siguiente comando para crear la documentación.
@@ -76,11 +88,11 @@ mvn javadoc:javadoc
 En la siguiente ruta desde nuestra carpeta del proyecto podemos encontrar la documentación.
 
 ```
-./target/site/apidocs
+./target/site/apidocs/
 ```
 Si ingresamos a esta podemos ver que hay un index.html que al abrir nos mostrara la siguiente pagina.
 
-![](photos/img_5.png)
+![img_10.png](img_10.png)
 
 ## Construido con
 
@@ -99,32 +111,15 @@ Santiago Ospina Mejia
 
 GNU General Public License family
 
-## Diseño
-
-Para ver con más detalle el diseño, debemos ver la arquitectura 
-que nos dieron a seguir.
-
-![](photos/img_6.png)
-
 ### Extensibilidad
 
-como en la arquitectura que pudimos observar es relativamente facil
-cambiar los componentes porque no tienen mucha dependencia entre ellos
-lo que significa que facilmente se pueden cambiar estos componentes
-por unos mas fuertes y rapidos, ya que se estan comunicando a traves de apis
-por lo cual muy facilmente el back lo podriamos desarollar en python 
-
-y como nosotros desarollamos nuestro back es facil por asi decirlo cambiar
-nuestro cache, o simplemente agregarle funcionales a nuestro back como ahorra
-restringir las peliculas para menores de edad esto se lograria sin necesitar
-muchos cambios.
+como podemos ver en este proyecto tenemos una clase abstracta que es file
+y despues la implementamos ya sea si son imagenes o texto, poreso si queremos
+agregar un nuevo tipo de archivo solo debemos de crear la clase para estos archivos
+sin la necesidad de tener que cambiar gran cosa en nuestro codigo, incluso el agregar
+un nuevo formato de imagenes
 
 ### Patrones
-
-* tenemos un patron de diseño singleton, ya que como vemos son clases
-que solo son instanciadas una ves como vemos con el front y el back
-donde solo tenemos un servidor http y un back api donde utilizamos un 
-unico cache
 
 * se puede observar estilo arquitectónico Cliente-Servidor, donde podemos
 ver un  fallo en nuetra arquitectura ya que nuestra aplicacion cuenta
@@ -134,22 +129,18 @@ centralizacion de los recursos, facil mantenimiento y un diseño que
 pueden entender gran parte de la gente
 
 ### Modularización
-como observamos en la arquitectura nuestra aplicacion cuenta clases con
-responsabilidades claras como vemos en especifico:
+como ya lo mencionamos anteriormente tenemos dos clases que son responsable
+de los diferentes formatos para imagenes y para texto, la cual cada una
+tiene una responsabilidad unica:
 
-* Front: contiene el servidor http que es el encargado de hacer las 
-peticiones a nuestro back y mostrar al usuario la informacion que reciba de la
-api
-* back: esta es la encargada de contener nuestra logica, la de consumir el api
-externo y llevar la informacion al front
-* Cache: esta clase la simulamos con un cache y su proposito es la de mejorar
-el rendimiento de nuestra aplicacion ya que le ahorra el back consultar el api
-externo ya que si es una pelicula ya pedida la informacion quedara guardada en
-el cache y no tendra que volver a consultar otra ves la api externa
-* api externa: es una api que consume nuestro back y nos da informacion que 
-necesitamos de de la peliculas, este es un recurso externo por lo que no 
-tenemos control sobre este lo cual puede generar diferentes problemas, pero
-nos ahorra demasiado tiempo, ya que no tendriamo que crear nosotros esta api
+* textController: contiene todo lo necesario para manejar los formatos de
+texto que nos pidieron html css js
+
+* imgController: contiene todo lo necesario para manejar los formatos de
+  imagenes que codificamos en nuestro servidor que en este caso son 
+  jpg, png, jpeg y gif
+  
+
 
 ## Agradecimientos
 
@@ -157,7 +148,7 @@ nos ahorra demasiado tiempo, ya que no tendriamo que crear nosotros esta api
 
 ## Tener en cuenta
 
-en la clase ya hablada de los test BackTest no pasa una prueba cuando se ejecuta
-el comando de mvn package por lo que despues de correrlas manualmente como
-mostre en el readme comento el test que fallaba con el comando para evitar mas errores
-asi deberia de servir sin ningun problema, gracias por su entendimiento 
+no se implementaron todos los formatos de imagenes que existen, se implementaron
+para 4 formatos ya anteriormente mencionados, si se sube un archivo al servidor
+y no maneja ese formato va a salir el error ya mostrado anteriormente donde dice
+archivo no soportado.
