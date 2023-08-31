@@ -22,7 +22,7 @@ public class serverHttp {
      * @throws Exception en caso de que suceda un error
      * @param args donde se le pueden pasar argumentos
      */
-    public static void main(String[] args) throws Exception {
+    public static void start(String[] args) throws Exception {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(35000);
