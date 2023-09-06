@@ -1,7 +1,7 @@
-# Laboratorio 2 AREP
+# Laboratorio 3 AREP
 este laboratorio consiste en construir un servidor http que pueda manejar
-diferentes tipos de archivos, y ademas de eso tener una aplicacion html css javascript
-que use de recurso rest.
+diferentes tipos de archivos, y servicios web de tipo GET y POST usando 
+funciones lambda.
 
 ## Iniciando
 
@@ -19,7 +19,7 @@ a nuestro entorno local para eso ejecutamos el siguiente comando en
 la terminal donde funcionen los comandos git
 
 ```
-git clone https://github.com/santiagoOsp01/LabArep2.git
+git clone https://github.com/santiagoOsp01/labArep3.git
 ```
 
 Esto creará un repositorio localdonde accederemos y ejecutaremos 
@@ -32,30 +32,42 @@ mvn package
 luego de ejecutar el comando si estamos en intellij vamos a construir el proyecto presionando 
 este boton de martillo verde que podemos ver en la siguiente imagen:
 
-![](photos/img12.png)
+![](photos/img_8.png)
 
-luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es serverHttp
-y en esta clase corremos el metodo main, para que funcione nuestra clase
+luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es lambda que esta 
+en edu.eci.arep.functLambda y en esta clase corremos el metodo main, 
+para que funcione nuestra clase
 
-![img.png](photos/img.png)
+![](photos/img.png)
 
 Eso hará que ya este disponible nuestra aplicacion. Para corroborar pega y copia o presiona
-la siguiente url http://localhost:35000/index.html.
+la siguiente url http://localhost:35000/home.html.
 
-entramos en el siguiente link porque en este html esta la aplicacion que nos pidieron
-para este laboratorio, podemos observar a continuacion:
+entrando al link podemos ver a continuacion la siguiente pagina
+con la cual podemos llamar a la funcion lambda del endpoint /hello
+con post y get:
 
-![](photos/img_1.png)
+![](photos/img1.png)
 
-y al buscar una pelicula aparecera lo siguiente.
+![](photos/img2.png)
 
-![](photos/img_2.png)
+aqui en la terminal vemos como hacen los pedidos post y get
+
+![](photos/img3.png)
+
+tambien lo podemos ejecutar directamente las funciones lambda en la siguiente url
+http://localhost:35000/hello?v=John
+
+![](photos/img4.png)
+
 
 ## Corriendo los tests
 
 en este proyecto no contamos con pruebas unitarias, sino que todas las pruebas
 se hicieron con la aplicacion en marcha para verificar que si pueda con los
 tipos de archivos que nos piden en este laboratorio html, css, js, y imagenes
+y tambien vamos a probar las diferentes funciones lambdas que tenemos
+programadas en nuestro servidor
 
 vamos a primero probar con html:
 
@@ -63,27 +75,43 @@ vamos a primero probar con html:
 
 css:
 
-![](photos/img_4.png)
+![](photos/img_2.png)
 
 js:
 
-![](photos/img_5.png)
+![](photos/img_3.png)
 
 imagenes jpg:
 
-![](photos/img_6.png)
+![](photos/img_4.png)
 
 imagenes png:
 
-![](photos/img_7.png)
+![](photos/img_5.png)
 
-tambien cuando un archivo no existe nos direcciona a la siguiente pagina:
+funciones lambda 
 
-![](photos/img_8.png)
+/hello:
+
+![](photos/img6.png)
+
+/coseno:
+
+![](photos/img7.png)
+
+/seno:
+
+![](photos/img8.png)
+
+tambien cuando un archivo o funcion lambda no existe nos direcciona a la siguiente pagina:
+
+![](photos/img_6.png)
+
+![](photos/img5.png)
 
 y si no manejamos un formato nos lleva a lo siguiente:
 
-![](photos/img_9.png)
+![](photos/img_7.png)
 
 ## Documentación
 Primero debemos ejecutar el siguiente comando para crear la documentación.
@@ -97,24 +125,7 @@ En la siguiente ruta desde nuestra carpeta del proyecto podemos encontrar la doc
 ```
 Si ingresamos a esta podemos ver que hay un index.html que al abrir nos mostrara la siguiente pagina.
 
-![](photos/img_10.png)
-
-## Construido con
-
-* [Maven](https://maven.apache.org/) - Administrador de dependencias
-* [OMDAPI](https://www.omdbapi.com) - API externa de consulta
-
-## Version
-
-1.0-SNAPSHOT
-
-## Autores
-
-Santiago Ospina Mejia 
-
-## Licencia
-
-GNU General Public License family
+![](photos/img9.png)
 
 ### Extensibilidad
 
@@ -124,14 +135,26 @@ agregar un nuevo tipo de archivo solo debemos de crear la clase para estos archi
 sin la necesidad de tener que cambiar gran cosa en nuestro codigo, incluso el agregar
 un nuevo formato de imagenes
 
+tambien si queremos agregar una nueva funcion lambda solo tenemos que agregarla
+a la clase lambda en el metodo main como podemos ver a continuacion
+
+![](photos/img10.png)
+
+### Arquitectura
+
+* front: en este contenemos nuestro servidor http que es el controlador
+de toda nuestra arquitectura la que usa al fileController y las funciones lambdas
+* fileController: es el encargador de manejar todos los tipos de archivos
+que pueda manejar nuestro servidor
+* functLambda: encargado de nuestro servicios web de tipo GET y POST 
+usando funciones lambda, y tambien nuestra clase principal que arranca nuestro
+servidor web 
+
 ### Patrones
 
-* se puede observar estilo arquitectónico Cliente-Servidor, donde podemos
-ver un  fallo en nuetra arquitectura ya que nuestra aplicacion cuenta
-con dos puntos de fallos que si se cae la api externa o nuestro back
-nuestro aplicacion dejaria de funcionar, por otro lado nos ofrece la
-centralizacion de los recursos, facil mantenimiento y un diseño que 
-pueden entender gran parte de la gente
+* se puede observar estilo arquitectónico Cliente-Servidor, donde tenemos un 
+servidor http que puede traer archivos con diferentes formatos y tambien
+usar las diferentes funciones lamdas que programamos en nuestro servidor
 
 ### Modularización
 como ya lo mencionamos anteriormente tenemos dos clases que son responsable
@@ -144,8 +167,23 @@ texto que nos pidieron html css js
 * imgController: contiene todo lo necesario para manejar los formatos de
   imagenes que codificamos en nuestro servidor que en este caso son 
   jpg, png, jpeg y gif
-  
 
+## Construido con
+
+* [Maven](https://maven.apache.org/) - Administrador de dependencias
+* [OMDAPI](https://www.omdbapi.com) - API externa de consulta
+
+## Version
+
+1.0-SNAPSHOT
+
+## Autores
+
+Santiago Ospina Mejia
+
+## Licencia
+
+GNU General Public License family
 
 ## Agradecimientos
 
@@ -157,3 +195,11 @@ no se implementaron todos los formatos de imagenes que existen, se implementaron
 para 4 formatos ya anteriormente mencionados, si se sube un archivo al servidor
 y no maneja ese formato va a salir el error ya mostrado anteriormente donde dice
 archivo no soportado.
+
+tambien en nuestro servidor solo tenemos 3 funciones lambdas programadas que son 
+
+/hello
+
+/coseno
+
+/seno

@@ -6,6 +6,8 @@ import java.io.*;
 import edu.eci.arep.fileController.file;
 import edu.eci.arep.fileController.imgController;
 import edu.eci.arep.fileController.textController;
+import edu.eci.arep.functLambda.lambda;
+import edu.eci.arep.functLambda.servicio;
 
 
 /***
@@ -16,7 +18,8 @@ public class serverHttp {
 
 
     /***
-     * funcion encargada de inicializar nuestro servidor http que recibe diferentes tipos de archivos y la que se va
+     * funcion encargada de inicializar nuestro servidor http que recibe diferentes tipos de archivos y
+     * funciones lamda, este metodo es la que se va
      * a encargar de mantener en constante uso hasta que se decida apagar el servicio
      * de lo contrario seguira funcionando con la excepcion que ocurra un error
      * @throws Exception en caso de que suceda un error
@@ -42,13 +45,25 @@ public class serverHttp {
             }
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String inputLine = in.readLine();
-            String path = inputLine.split(" ")[1];
+            String Request = "";
+            Request += in.readLine() + "\n";
+            while (in.ready()) {
+                Request += (char) in.read();
+            }
+            System.out.println("Received: " + Request.split("\n")[0]);
+            String method = Request.split(" ")[0];
+            String path = Request.split(" ")[1];
+            URI functPath = new URI(path);
             URI filePath = new URI("/target/classes/public" + path);
-            System.out.println(inputLine);
-
+            servicio s = lambda.search(functPath.getPath(), method);
             try {
-                manageFile(filePath, clientSocket);
+                if(s != null){
+                    String query = path.split("=")[1];
+                    String response = s.ejecutar(query);
+                    sendResponce(clientSocket, response);
+                } else {
+                    manageFile(filePath, clientSocket);
+                }
             }catch (Exception e){}
 
             in.close();
@@ -89,6 +104,24 @@ public class serverHttp {
             format = path.getPath().split("\\.")[1];
         } catch (ArrayIndexOutOfBoundsException e){}
         return format;
+    }
+
+    /***
+     * funcion encargada de mostrar los resultados de las funciones lambda
+     * @param lambda es resultado
+     * @param clientSocket es el socket donde esta el cliente
+     * @throws IOException en caso de que suceda un error
+     */
+    public static void sendResponce(Socket clientSocket, String lambda) throws IOException {
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        String outputLine;
+        outputLine = "HTTP/1.1 200 OK \r\n" +
+                "Content-Type: text/html" + " \r\n" +
+                "\r\n";
+        outputLine += lambda;
+        out.println(outputLine);
+        out.close();
+        clientSocket.close();
     }
 
 
