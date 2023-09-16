@@ -4,6 +4,8 @@ a partir de POJOS. Usando el servidor se debe construir una aplicación Web de e
 
 en este caso se realiso una aplicacion donde se puede consultar y poner notas dado el nombre
 
+el git que se trabajo en clase es en el siguiente link https://github.com/santiagoOsp01/minispring
+
 ## Iniciando
 
 ### Prerrequisitos
