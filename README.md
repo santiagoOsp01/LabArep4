@@ -146,7 +146,6 @@ que pueda manejar nuestro servidor
 el esta encargado de los postMapping y getMapping, tambien es el encargado de cargar los componentes y sus metodos
 * ejemploAppSpring: es una implementacion simple donde se manejan un post y get de las calificaciones que puede tener un alumno
 
- ![image](https://github.com/santiagoOsp01/LabArep4/assets/111186366/12ee2b1d-3bf7-4c57-bd8f-af78a5d20874)
 
 ### Modularización
 como ya lo mencionamos anteriormente tenemos dos clases que son responsable
