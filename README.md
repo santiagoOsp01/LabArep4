@@ -1,4 +1,4 @@
-# Laboratorio 3 AREP
+# Laboratorio 4 AREP
 este laboratorio consiste en construir un servidor http que pueda manejar
 diferentes tipos de archivos, y servicios web de tipo GET y POST usando 
 funciones lambda.

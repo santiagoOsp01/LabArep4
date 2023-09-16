@@ -1,13 +1,13 @@
 package edu.eci.arep.front;
 
+import java.lang.reflect.Method;
 import java.net.*;
 import java.io.*;
 
 import edu.eci.arep.fileController.file;
 import edu.eci.arep.fileController.imgController;
 import edu.eci.arep.fileController.textController;
-import edu.eci.arep.functLambda.lambda;
-import edu.eci.arep.functLambda.servicio;
+import edu.eci.arep.miniSpring.ComponentLoader;
 
 
 /***
@@ -25,7 +25,8 @@ public class serverHttp {
      * @throws Exception en caso de que suceda un error
      * @param args donde se le pueden pasar argumentos
      */
-    public static void start(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
+        ComponentLoader.loadComponents();
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(35000);
@@ -55,11 +56,11 @@ public class serverHttp {
             String path = Request.split(" ")[1];
             URI functPath = new URI(path);
             URI filePath = new URI("/target/classes/public" + path);
-            servicio s = lambda.search(functPath.getPath(), method);
+            Method s = ComponentLoader.search(functPath.getPath(), method);
             try {
                 if(s != null){
                     String query = path.split("=")[1];
-                    String response = s.ejecutar(query);
+                    String response = ComponentLoader.ejecutar(s,query);
                     sendResponce(clientSocket, response);
                 } else {
                     manageFile(filePath, clientSocket);
@@ -108,17 +109,17 @@ public class serverHttp {
 
     /***
      * funcion encargada de mostrar los resultados de las funciones lambda
-     * @param lambda es resultado
+     * @param responce es resultado
      * @param clientSocket es el socket donde esta el cliente
      * @throws IOException en caso de que suceda un error
      */
-    public static void sendResponce(Socket clientSocket, String lambda) throws IOException {
+    public static void sendResponce(Socket clientSocket, String responce) throws IOException {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         String outputLine;
         outputLine = "HTTP/1.1 200 OK \r\n" +
                 "Content-Type: text/html" + " \r\n" +
                 "\r\n";
-        outputLine += lambda;
+        outputLine += responce;
         out.println(outputLine);
         out.close();
         clientSocket.close();
