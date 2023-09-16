@@ -35,7 +35,10 @@ mvn package
 luego de ejecutar el comando si estamos en intellij vamos a construir el proyecto presionando 
 este boton de martillo verde que podemos ver en la siguiente imagen:
 
-![](photos/img_8.png)
+![image](https://github.com/santiagoOsp01/LabArep4/assets/111186366/b19f41c0-2896-4c8b-9e79-f28dca447046)
+
+![image](https://github.com/santiagoOsp01/LabArep4/assets/111186366/5c144609-a7b8-4412-add7-78cdc6a7b8ba)
+
 
 luego de que ya lo tengamos vamos a ejecutar la clase principal en este caso es serverHttp que esta 
 en edu.eci.arep.Front y en esta clase corremos el metodo main, 
